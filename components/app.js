@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+
 import SearchBar from  './search_bar';
+import SongsList from './songs_list';
 
 
 class App extends Component {
@@ -7,13 +10,17 @@ class App extends Component {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
-      songs: {}
+      songs: []
     };
   }
   handleSubmit(event){
     event.preventDefault();
-    console.log(event.target[0]);
-    // console.log(this.state.term);
+    const searchTerm = event.target[0].value;
+    const searchUrl = `https://api.spotify.com/v1/search?q=${searchTerm}&type=track`;
+
+    axios.get(searchUrl).then(function (response) {
+      this.setState({songs: response.data.tracks.items});
+    }.bind(this));
   }
 
   render(){
@@ -21,6 +28,7 @@ class App extends Component {
       <div>
         <h1>Spotify</h1>
         <SearchBar handleSubmit={this.handleSubmit}/>
+        <SongsList songs={this.state.songs}/>
       </div>
     );
   }
