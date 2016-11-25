@@ -3,14 +3,17 @@ import axios from 'axios';
 
 import SearchBar from  './search_bar';
 import SongsList from './songs_list';
+import VideoPlayer from './video_player';
 
 
 class App extends Component {
   constructor(props){
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClick = this.handleClick.bind(this);
     this.state = {
-      songs: []
+      songs: [],
+      currentSong: {}
     };
   }
   handleSubmit(event){
@@ -23,12 +26,23 @@ class App extends Component {
     }.bind(this));
   }
 
+  handleClick(event){
+    console.log(event.target.id);
+    const selected = this.state.songs.find((element) => {
+      return element.id === event.target.id
+    });
+
+    this.setState({currentSong: selected });
+    console.log(this.state.currentSong);
+
+  }
   render(){
     return (
       <div>
         <h1>Spotify</h1>
         <SearchBar handleSubmit={this.handleSubmit}/>
-        <SongsList songs={this.state.songs}/>
+        <SongsList handleClick={this.handleClick} songs={this.state.songs}/>
+        <VideoPlayer song={this.state.currentSong}/>
       </div>
     );
   }

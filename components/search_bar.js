@@ -15,6 +15,7 @@ class SearchBar extends Component{
           value={this.state.term}
           onChange={(event)=>{this.setState({term:event.target.value});}}
         />
+        <button type="submit">Enviar</button>
       </form>
     );
   }

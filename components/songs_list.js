@@ -4,11 +4,10 @@ class SongsList extends Component {
 
   render(){
     const songs = this.props.songs.map((song) => {
-      console.log(song);
-      return (<li key={song.id}>{song.name}</li>);
+      return (<li id={song.id} key={song.id}>{song.name}</li>);
     })
     return(
-      <div>
+      <div onClick={this.props.handleClick}>
         <ul>
           {songs}
         </ul>
