@@ -1,0 +1,19 @@
+li:hover{
+  cursor: pointer;
+  color:#33C3F0;
+}
+
+.player-container{
+  position: relative;
+}
+
+.player{
+  position: absolute;
+  top: 0%;
+  left: 25%;
+}
+
+img{
+  filter: grayscale(100%);
+  opacity: 0.5;
+}

@@ -10,12 +10,13 @@ class SearchBar extends Component{
   render(){
     return(
       <form onSubmit={this.props.handleSubmit}>
-        <input type="text"
+        <input
+          className="u-full-width"
+          type="text"
           placeholder="Search artist..."
           value={this.state.term}
           onChange={(event)=>{this.setState({term:event.target.value});}}
         />
-        <button type="submit">Enviar</button>
       </form>
     );
   }

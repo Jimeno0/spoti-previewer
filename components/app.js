@@ -37,12 +37,18 @@ class App extends Component {
 
   }
   render(){
+    const renderPlayer = this.state.songs[0] ? (<VideoPlayer song={this.state.currentSong}/>): '';
+
     return (
-      <div>
-        <h1>Spotify</h1>
-        <SearchBar handleSubmit={this.handleSubmit}/>
-        <SongsList handleClick={this.handleClick} songs={this.state.songs}/>
-        <VideoPlayer song={this.state.currentSong}/>
+      <div className="container">
+        <div className="row">
+          <h1>Spotify</h1>
+          <SearchBar handleSubmit={this.handleSubmit}/>
+        </div>
+        <div className="row">
+          <SongsList handleClick={this.handleClick} songs={this.state.songs}/>
+          {renderPlayer}
+        </div>
       </div>
     );
   }
