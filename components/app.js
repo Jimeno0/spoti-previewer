@@ -27,13 +27,11 @@ class App extends Component {
   }
 
   handleClick(event){
-    console.log(event.target.id);
     const selected = this.state.songs.find((element) => {
       return element.id === event.target.id
     });
 
     this.setState({currentSong: selected });
-    console.log(this.state.currentSong);
 
   }
   render(){

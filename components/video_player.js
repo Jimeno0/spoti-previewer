@@ -7,7 +7,6 @@ export default (props) => {
   const imgUrl = props.song.album ? props.song.album.images[0].url : '';
   const imgAlt = props.song.album ? props.song.album.name : '';
   const artist = props.song.album ? props.song.album.artists[0].name : '';
-  console.log(artist);
 
   return (
     <div className="seven columns">
